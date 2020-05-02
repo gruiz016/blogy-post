@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% for user in users %}
+<section class="profile-multi-users">
+    <h1>Username: {{user.username}}</h1>
+    <div class="container">
+        <img class="profile-pic" src="{{user.url}}" alt="{{user.username}} profile picture">
+        <div class="user-info">
+            <p>First Name: {{user.first_name}}</p>
+            <p>Last Name: {{user.last_name}}</p>
+        </div>
+    </div>
+</section>
+{% endfor %}
+{% endblock %}

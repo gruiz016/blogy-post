@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} User Profile: {{user.username}} {% endblock %}
+
+{% block content %}
+<section class="profile">
+    <h1>Username: {{user.username}}</h1>
+    <div class="container">
+        <img class="profile-pic" src="{{user.url}}" alt="{{user.username}} profile picture">
+        <div class="user-info">
+            <p>First Name: {{user.first_name}}</p>
+            <p>Last Name: {{user.last_name}}</p>
+            <div class="action-btns">
+                <a class="btn" href="/user/{{user.id}}/edit">Edit</a>
+                <a class="btn danger" href="/user/{{user.id}}/delete">Delete</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

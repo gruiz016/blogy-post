@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Blogy - Blog's Away!{% endblock %}
+{% block content %}
+<form class="form-login" method="POST" action="/">
+
+    <div class="username">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+    </div>
+
+    <div class="password">
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password">
+    </div>
+
+    <div class="login-actions">
+        <button class="btn">Login</button>
+        <a class="btn" href="/sign-up">Register Here!</a>
+    </div>
+</form>
+{% endblock %}
