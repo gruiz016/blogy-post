@@ -1,12 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
 
 db = SQLAlchemy()
-
 
 def connect_db(app):
     db.app = app
     db.init_app(app)
-
 
 class User(db.Model):
     '''Creates a user model'''
@@ -17,6 +16,8 @@ class User(db.Model):
         u = self
         return f'<User id={u.id}, first_name={u.first_name}, last_name={u.last_name}, username={u.username}>'
 
+    posts = relationship("Post")
+    
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
@@ -39,3 +40,4 @@ class User(db.Model):
     @classmethod
     def login(cls, username, password):
         return cls.query.filter_by(username=username, password=password).first()
+

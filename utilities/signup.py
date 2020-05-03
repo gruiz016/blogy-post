@@ -1,9 +1,11 @@
+'''Signup functions.'''
+
 from models.user import User, db
 from flask import flash, redirect, session
 from random import randint
 
 def signup_user(f_name, l_name, url, us_name, password):
-
+    '''Signs up new users. Sets session data and gives user a unqiue token.'''
     if len(f_name) == 0 or len(l_name) ==0 or len(us_name) == 0 or len(password) == 0:
         flash('All fields but URL are required.', 'alert-danger')
         return redirect('/sign-up')
@@ -27,6 +29,7 @@ def signup_user(f_name, l_name, url, us_name, password):
 
 
 def confirm_user(user):
+    '''Confirms there is a user object created before redirecting to the user profile after creation.'''
     if user:
         return redirect(f'/user/{user.id}')
     flash('Something went wrong, please try again!', 'alert-danger')
@@ -34,7 +37,10 @@ def confirm_user(user):
 
 
 def validate_and_try_user(f_name, l_name, url, username, password):
-
+    '''Validates and tries to signup user in the database.
+    
+    Exception is rasied if the username is not unique.
+    '''
     try:
         user = signup_user(f_name=f_name, l_name=l_name, url=url,
                            us_name=username, password=password)
