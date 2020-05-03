@@ -20,8 +20,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    url = db.Column(db.String(
-        100), default='https://storage.needpix.com/rsynced_images/blank-profile-picture-973461_1280.png')
+    url = db.Column(db.String, default='https://storage.needpix.com/rsynced_images/blank-profile-picture-973461_1280.png')
     username = db.Column(db.String(10), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False)
 

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Edit User: {{user.username}}{% endblock %}
+
+{% block content %}
+<form class="form-signup" method="POST" action="/user/{{user.id}}/edit">
+
+    <div class="firstname">
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstname" id="firstname" value="{{user.first_name}}">
+    </div>
+
+    <div class="lastname">
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" id="lastname" value="{{user.last_name}}">
+    </div>
+
+    <div class="url">
+        <label for="profile-pic">Url:</label>
+        <input type="text" name="profile-pic" id="profile-pic" value="{{user.url}}">
+    </div>
+
+    <div class="username">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" value="{{user.username}}">
+    </div>
+
+    <div class="password">
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password" value="{{user.password}}">
+    </div>
+
+    <div class="login-actions">
+        <button class="btn">Confirm</button>
+        <a href="/users" class="btn">Cancel</a>
+    </div>
+</form>
+{% endblock %}

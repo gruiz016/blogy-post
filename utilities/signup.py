@@ -1,8 +1,6 @@
 from models.user import User, db
-from flask import flash, redirect
-
-strong = {'!', '@', '#', '$', '&'}
-
+from flask import flash, redirect, session
+from random import randint
 
 def signup_user(f_name, l_name, url, us_name, password):
 
@@ -16,9 +14,15 @@ def signup_user(f_name, l_name, url, us_name, password):
     else:
         new_user = User(first_name=f_name, last_name=l_name,
                         url=url, username=us_name, password=password)
-
+    
     db.session.add(new_user)
     db.session.commit()
+    
+    token = randint(1,300000)
+    session['username'] = new_user.username
+    session['token'] = token
+    session['user_id'] = new_user.id
+    
     return User.find_user_by_username(us_name)
 
 
