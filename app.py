@@ -2,6 +2,7 @@
 from flask import Flask, render_template, redirect, request, flash, session
 from models.user import db, connect_db, User
 from models.post import Post
+import os
 # Helper functions
 from utilities.signup import signup_user, confirm_user, validate_and_try_user
 from utilities.login import login_user, check_if_logged_in
@@ -10,13 +11,11 @@ from utilities.post_edit import save_user_post, can_user_edit_post, append_edit_
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogy_db'
-app.config['DATABASE_URL'] = 'postgres://kvgjygnjwofwem:18c1e2567c4622c59f475d345b60e1ee517c84d76dfb126556fb838a94f0a421@ec2-52-44-55-63.compute-1.amazonaws.com:5432/d2vdsbakaqs684'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///blogy_db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SECRET_KEY'] = 'abc1122311231'
+app.config['SECRET_KEY'] = os.environ.get('SERCRET_KEY', '12345')
 connect_db(app)
-
 
 @app.errorhandler(404)
 def page_not_found(e):
