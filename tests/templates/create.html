@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Create A Post!{% endblock %}
+
+{% block content %}
+<form class="form-signup" method="POST" action="/create-post">
+    <h1 class="text-center">Add Post as {{session['username']}}</h1>
+
+    <div class="firstname">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title">
+    </div>
+
+    <div class="lastname">
+        <label for="content">Post Body:</label>
+        <textarea type="text" name="content" id="content"></textarea>
+    </div>
+
+    <div class="login-actions">
+        <button class="btn">Confirm</button>
+        <a href="/" class="btn">Cancel</a>
+    </div>
+</form>
+{% endblock %}

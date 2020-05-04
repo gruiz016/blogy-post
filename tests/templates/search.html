@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+{% for post in posts %}
+<section class="profile-post my-2">
+    <a class="posts" href="/post/details/{{post.id}}">
+        <h2 class="post-title text-center">{{post.title}}</h2>
+    </a>
+    <div class="content-post">
+        <p class="post-content">{{post.content}}</p>
+        <p class="created-at">Created: {{post.created_at.strftime('%A, %B-%d-%Y at %I:%M%p')}}</p>
+    </div>
+</section>
+{% endfor %}
+{% endblock %}

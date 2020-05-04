@@ -10,7 +10,7 @@ from utilities.post_edit import save_user_post, can_user_edit_post, append_edit_
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogy_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogy_test_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'abc1122311231'
@@ -107,7 +107,7 @@ def save_post():
     '''Handles the create form request.'''
     title = request.form['title']
     content = request.form['content']
-    user_id = session.get('user_id')
+    user_id = 1
     return save_user_post(title=title, content=content, user_id=user_id)
 
 @app.route('/posts')

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+<div class="post-details">
+    <h1 class="text-center">{{post.title}}</h1>
+    <p class="details-content">{{post.content}}</p>
+    <p class="text-right user">Posted by: {{user.username}}</p>
+</div>
+{% endblock %}
