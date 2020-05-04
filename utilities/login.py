@@ -11,7 +11,7 @@ def login_user(user):
         session['username'] = user.username
         session['token'] = token
         session['user_id'] = user.id
-        return redirect('/users')
+        return redirect('/posts')
     else:
         flash('User Name/Password was incorrect, please try again', 'alert-danger')
         return redirect('/') 

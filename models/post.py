@@ -30,3 +30,7 @@ class Post(db.Model):
     def get_post_by_id(cls, post_id):
         return cls.query.get(post_id)
     
+    @classmethod
+    def search_post_titles(cls, title):
+        return cls.query.filter(cls.title.ilike(f'%{title}%')).all()
+    
