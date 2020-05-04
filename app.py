@@ -11,6 +11,7 @@ from utilities.post_edit import save_user_post, can_user_edit_post, append_edit_
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogy_db'
+app.config['DATABASE_URL'] = 'postgres://kvgjygnjwofwem:18c1e2567c4622c59f475d345b60e1ee517c84d76dfb126556fb838a94f0a421@ec2-52-44-55-63.compute-1.amazonaws.com:5432/d2vdsbakaqs684'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'abc1122311231'
